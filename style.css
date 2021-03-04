@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Branding */
+.branding {
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: cornflowerblue;
+  color: #f1f1f1;
+  font-size: 20px;
+}
+
+/* Days container */
+.days_container {
+  width: 100%;
+  padding: 10px;
+}
+.days_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+}
+
+/* Day cards */
+.day_card {
+  width: 150px;
+  min-height: 200px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(100, 148, 237, 0.685);
+  color: #f1f1f1;
+}
+.day_card .weather_temp {
+  font-size: 25px;
+}

@@ -44,7 +44,7 @@
         },
         {
             "id" : 6,
-            "day" : "Sut",
+            "day" : "Sat",
             "temp" : 22,
             "windDirection" : "north-east",
             "windSpeed" : 10,
