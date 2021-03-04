@@ -77,8 +77,3 @@ const getFullDayName = (day) => {
             return "Sunday";
     }
 }
-
-// Toggle widget
-const toggleWidget = () => {
-        widget.classList.toggle('show')
-}
