@@ -9,7 +9,7 @@ let weatherData;
 
 // DOM elements
 const daysContainer = document.getElementById('days_list');
-
+let widget = document.getElementById('widget')
 
 // Fetch weather data func
 const getWeatherData = async () => {
@@ -17,18 +17,34 @@ const getWeatherData = async () => {
     const data = await res.json()
     weatherData = data
     renderDays()  
+    
 }
 
 
 // Render days func
 const renderDays = () => {
     weatherData.days.forEach(day => {
-        daysContainer.innerHTML += `<li class="day_card id="day_card">
+        daysContainer.innerHTML += `<li class="day_card" id=${day.id}>
         <h1 class="day_name">${getFullDayName(day.day)}</h1>
         <h2 class="weather_type">${getWeatherType(day.type)}</i></h2>
         <p class="weather_temp">${day.temp} ${weatherData.tempUnit}</p>
         </li>`;
     });
+
+    // Add event for each day card
+    daysContainer.childNodes.forEach(child => child.addEventListener("click", ()=> {
+        const clickedItem = weatherData.days.find(day => child.id == day.id)
+        console.log(clickedItem)
+        // widget toggle
+        widget.classList.toggle('show')
+        widget.innerHTML = `
+            <h1>${getFullDayName(clickedItem.day)}</h1>
+            <h2>${getWeatherType(clickedItem.type)}</h2>
+            <p>Temperature : ${clickedItem.temp} ${weatherData.tempUnit}</p>
+            <p>Wind direction : ${clickedItem.windDirection}</p>
+            <p>Wind speed :${clickedItem.windSpeed} ${weatherData.windSpeedUnit}</p>
+        `
+    }))
 }
 
 
@@ -47,23 +63,22 @@ const getFullDayName = (day) => {
     switch(day){
         case "Mon" : 
             return "Monday";
-            break;
         case "Tue" : 
             return "Tuesday";
-            break;
         case "Wed" : 
             return "Wednesday"
-            break;
         case "Thur" :
             return "Thursday";
-            break;
         case "Fri" : 
-            return "Friday"
-            break;
+            return "Friday";
         case "Sat" : 
-            return "Saturday"
-            break;
+            return "Saturday";
         case "Sun" : 
-            return "Sunday"
+            return "Sunday";
     }
+}
+
+// Toggle widget
+const toggleWidget = () => {
+        widget.classList.toggle('show')
 }
